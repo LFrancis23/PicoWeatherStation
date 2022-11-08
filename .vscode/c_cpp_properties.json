@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "/home/pi/pico/**",
-                "/home/pi/pico/pico-sdk/**"
+                "/home/pi/pico/pico-sdk/**",
+                "/home/pi/pico/pico-sdk/src/rp2_common/pico_cyw43_arch/include/pico/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

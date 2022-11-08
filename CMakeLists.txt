@@ -15,4 +15,6 @@ pico_enable_stdio_uart(test 1)
 
 pico_add_extra_outputs(test)
 
-target_link_libraries(test pico_stdlib)
+target_include_directories(test PRIVATE ${CMAKE_CURRENT_LIST_DIR} )
+
+target_link_libraries(test pico_cyw43_arch_lwip_threadsafe_background pico_stdlib)
