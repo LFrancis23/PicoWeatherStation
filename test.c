@@ -2,6 +2,7 @@
 
 #include "pico/stdlib.h"
 #include "pico/cyw43_arch.h"
+#include "boards/pico_w.h"
 
 char ssid[] = "Telephone Line";
 char pass[] = "ElectricLightsOrchestra";
@@ -21,4 +22,10 @@ int main(){
                 return 1;
         }
         printf("Connected\n"); 
+        while(1){
+                printf("Testing\n");
+                cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN,1);
+                sleep_ms(1000);
+                cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN,0);
+        }
 }
