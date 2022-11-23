@@ -29,6 +29,7 @@ temp = data[1]
 pressure = data[2]
 humidity = data[3]
 now = getDateTime()
+print(lux,temp,pressure,humidity)
 try:
     sqliteConnection = sqlite3.connect('/var/www/datalogger/weatherstation.db')
     cursor = sqliteConnection.cursor()
