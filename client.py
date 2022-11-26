@@ -3,14 +3,15 @@ import socket
 import sqlite3
 from datetime import datetime
 import time
+import re
 
 HOST = "192.168.0.237"
 PORT = 42069
 
 
 def getDateTime():
-	now = datetime.now()
-	now = now.isoformat()
+	now = datetime.now()#Get current datetime
+	now = now.isoformat() #Convert datetime to iso format
 	return now
 
 def read_data():
@@ -24,10 +25,14 @@ def read_data():
 
 
 data = read_data()
+
 lux = data[0]
 temp = data[1]
+temp = temp[:-1]
 pressure = data[2]
+pressure = pressure[:-3]
 humidity = data[3]
+humidity = humidity[:-1]
 now = getDateTime()
 print(lux,temp,pressure,humidity)
 try:
