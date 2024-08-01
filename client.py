@@ -72,6 +72,17 @@ try:
     )
     sqliteConnection.commit()
     print("Record inserted successfully into weather table", cursor.rowcount)
+    # Create a trigger to delete records older than 24 hours on new insert
+    cursor.execute("""
+        CREATE TRIGGER IF NOT EXISTS delete_old_records 
+        AFTER INSERT ON weather
+        BEGIN
+            DELETE FROM weather WHERE datetime < datetime('now', '-1 day');
+        END;
+    """)
+    sqliteConnection.commit()
+    print("Successfully created trigger to maintain 24 hours of history")
+    
     #Close cursor
     cursor.close()
 except sqlite3.Error as error:
